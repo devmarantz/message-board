@@ -9,6 +9,8 @@ export default class Comment extends HTMLElement {
       <button type="button" class="delete-button">x</button>
     `;
 
-    this.querySelector('button.delete-button').addEventListener('click', () => console.log('deleting comment...'));
+    this.querySelector("button.delete-button").addEventListener("click", () =>
+      console.log("deleting comment...")
+    );
   }
 }
