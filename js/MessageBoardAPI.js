@@ -90,8 +90,10 @@ class MessageBoardAPI {
    * @returns {array} Filtered array of comment objects
    */
   filterCommentsByText(substring = '') {
-    return wait(1000).then(() => this.comments.filter(comment => comment.text.toLowerCase().includes(substring.toLowerCase()))
-    );
+    return fetch(`https://marantzexpress.herokuapp.com/api/comments?filter=${substring}`).then(response => response.json());
+
+    // return wait(1000).then(() => this.comments.filter(comment => comment.text.toLowerCase().includes(substring.toLowerCase()))
+    // );
   }
 
   likeComment(id) {
