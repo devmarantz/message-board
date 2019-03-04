@@ -5,6 +5,7 @@ function wait(ms) {
 class MessageBoardAPI {
   constructor(comments = []) {
     this.comments = comments;
+    this.url = 'https://marantzexpress.herokuapp.com/api/comments';
   }
 
   // returns all comments
@@ -64,7 +65,7 @@ class MessageBoardAPI {
     // const index = this.comments.findIndex(comment => comment.id === id);
     // this.comments.splice(index, 1);
     // return wait(1500).then(() => this.comments);
-    return fetch(`https://marantzexpress.herokuapp.com/api/comments/${id}`, {
+    return fetch(`${this.url}/${id}`, {
       method: 'DELETE',
     }).then(response => response.json());
   }
@@ -90,8 +91,10 @@ class MessageBoardAPI {
    * @returns {array} Filtered array of comment objects
    */
   filterCommentsByText(substring = '') {
-    return wait(1000).then(() => this.comments.filter(comment => comment.text.toLowerCase().includes(substring.toLowerCase()))
-    );
+    return fetch(`https://marantzexpress.herokuapp.com/api/comments?filter=${substring}`).then(response => response.json());
+
+    // return wait(1000).then(() => this.comments.filter(comment => comment.text.toLowerCase().includes(substring.toLowerCase()))
+    // );
   }
 
   likeComment(id) {
