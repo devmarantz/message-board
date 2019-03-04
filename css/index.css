@@ -1,4 +1,4 @@
-@import "components/MessageBoard.css";
+@import "components/MessageBoardApp.css";
 
 html,
 body {
@@ -35,3 +35,4 @@ button {
   border-radius: 5px;
   background-color: hsl(217, 96%, 51%);
 }
+
